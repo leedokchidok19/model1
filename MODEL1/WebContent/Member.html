@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<script type = "text/javascript">
+	function check(){
+		var frm = document.form1;
+		var id =frm.id.value;
+		var pwd =frm.pwd.value;
+		var pwd2 =frm.pwd2.value;
+		var name =frm.name.value;
+		var sex =frm.sex.value;
+		var jumin =frm.jumin.value;
+		var juso =frm.juso.value;
+
+		if(id==""){
+			 alert("아이디를 입력하세요");
+			 frm.id.focus();
+			 return;
+		 }else if(pwd==""){
+			 alert("비밀번호를 입력하세요");
+			 frm.pwd.focus();
+			 return;
+		 }else if(pwd2==""){
+			 alert("비밀번호 확인을 입력하세요");
+			 frm.pwd2.focus();
+			 return;
+		 }else if(pwd!=pwd2){
+			 alert("비밀번호 일치하지 않습니다");
+			 frm.uesr.Pwd.value="";
+			 frm.uesr.Pwd2.value="";
+			 frm.pwd.focus();
+			 return;
+		}else if(name==""){
+			 alert("이름을 입력하세요");
+			 frm.name.focus();
+			 return;
+		}else if(jumin==""){
+			   alert("생년월일을 입력하세요");
+			   frm.jumin.focus();
+			   return;
+		}else if(isNaN(jumin)==true){
+		 	   	alert("숫자만 입력하세요");
+		 	    frm.jumin.value="";
+		 	   	frm.jumin.focus();
+				return;
+		}
+		frm.action = "./memberAction.jsp";
+		frm.method = "post";
+		frm.submit();
+		return;
+		}
+</script>
+</head>
+<body>
+<h1 style = "text-align : center">회원가입</h1>
+	<form name = "form1">
+		<table style="margin-left:auto ; margin-right:auto" style="text-align:center" border ="1">
+			<tr>
+				<td>ID</td>
+				<td colspan =3; ><input type="text" name ="id"  value = ""/></td>
+			</tr>
+			<tr>
+				<td>비밀번호</td>
+				<td><input type="password" name = "pwd" value = ""/></td>
+				<td>비밀번호확인</td>
+				<td><input type="password" name = "pwd2" value = ""/></td>
+			</tr>
+			<tr>
+				<td >이름</td>
+				<td colspan =3;><input type="text" name = "name"  value = ""/></td>
+			</tr>
+			<tr>
+				<td>성별</td>
+				<td colspan =3;>
+					<input type="radio" name = "sex"  value = "M" />남자
+			 		<input type="radio" name = "sex"  value = "F" checked = "checked"/>여자
+			 	</td>
+			</tr>
+			<tr>
+				<td>생년월일(주민번호 앞 6자리)</td>
+				<td colspan =3><input type="text" name = "jumin"  value = "" size = "6" maxlength ="6"/>
+				</td>
+			</tr>
+			<tr>
+				<td>주소</td>
+				<td colspan =3><input type="text" name = "juso" value = ""/></td>
+			</tr>
+		 	<tr>
+				<td>취미</td>
+				<td colspan=3><input type="checkbox"  name="fav"  value="축구"/>축구
+				<input type="checkbox"  name="fav"  value="야구"/>야구
+				<input type="checkbox"  name="fav"  value="골프"/>골프</td>
+			</tr>
+			<tr>
+				<td colspan =4 style="text-align:center">
+				<input type = "button"  value = "전  송" onclick = "check();"  style="width:100px"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
